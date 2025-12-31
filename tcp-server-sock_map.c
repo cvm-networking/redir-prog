@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
     struct sock_key_pair tcp_server_skp;
 
     if (argc != 7) {
-        perror("Usage: sock_map <tcp_server_addr> <tcp_server_port> <vsock_server_cid> <vsock_server_port> <use_nodelay> <use_zc>\n");
+        perror("Usage: sock_map <guest_server_addr> <tcp_server_port> <vsock_server_cid> <vsock_server_port> <use_nodelay> <use_zc>\n");
         exit(-1);
     }
     guest_s_addr = inet_addr(argv[1]);
