@@ -2,11 +2,13 @@
 
 int set_tcp_server(struct sockaddr_in *tcp_server_addr, int tcp_server_port) {
     int tcp_server_fd = socket(AF_INET, SOCK_STREAM, 0);
+    int reuseaddr = 1;
 
     if (tcp_server_fd < 0) {
         perror("socket fail");
         exit(errno);
     }
+    setsockopt(tcp_server_fd, SOL_SOCKET, SO_REUSEADDR, &reuseaddr, sizeof(reuseaddr));
 
     memset(tcp_server_addr, 0, sizeof(*tcp_server_addr));
     tcp_server_addr->sin_family = AF_INET;

@@ -2,11 +2,13 @@
 
 int set_vsock_server(struct sockaddr_vm *vsk_server_addr, int vsk_server_port) {
     int vsk_server_fd = socket(AF_VSOCK, SOCK_STREAM, 0);
+    int reuseaddr = 1;
 
     if (vsk_server_fd < 0) {
         perror("socket fail");
         exit(errno);
     }
+    setsockopt(vsk_server_fd, SOL_SOCKET, SO_REUSEADDR, &reuseaddr, sizeof(reuseaddr));
 
     memset(vsk_server_addr, 0, sizeof(*vsk_server_addr));
     vsk_server_addr->svm_family = AF_VSOCK;
