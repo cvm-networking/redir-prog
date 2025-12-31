@@ -15,7 +15,7 @@ struct {
     __uint(type, BPF_MAP_TYPE_SOCKHASH);
     __type(key, struct sockmap_key);
     __type(value, __u64);
-    __uint(max_entries, 256);
+    __uint(max_entries, 65536);
 } sock_map SEC(".maps");
 
 SEC("sk_skb")

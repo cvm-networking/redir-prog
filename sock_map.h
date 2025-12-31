@@ -20,7 +20,7 @@
 #include <bpf/bpf.h>
 #include "bpf-verdict.skel.h"
 
-#define MAX_EVENTS 32
+#define MAX_EVENTS 65536
 
 #ifdef DEBUG
 #define DPRINTF(...) printf(__VA_ARGS__);
